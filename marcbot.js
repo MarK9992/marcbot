@@ -4,7 +4,7 @@ var Slack = require('slack-client'),
 	autoMark = true, // Automatically mark each message as read after it is processed.
 	slack = new Slack(SLACK_TOKEN, autoReconnect, autoMark),
 	SELF_USER = "U0DK0NES3",
-	MARC_USER = "U08PP5TFX";
+	MARK_USER = "U08PP5TFX";
 
 slack.on('open', function() {
     console.log("Connected to", slack.team.name, "as", slack.self.name);
@@ -12,7 +12,9 @@ slack.on('open', function() {
 
 slack.on('message', function(message) {
 	var channel = slack.getChannelGroupOrDMByID(message.channel),
-		selfQuote = new RegExp("<@" + SELF_USER + ">");
+		selfQuote = new RegExp("<@" + SELF_USER + ">"),
+		markQuote = new RegExp("<@" + MARK_USER + ">"),
+		random = Math.random() * 100;
 	
 	console.log(message);
 	if (message.user == "USLACKBOT") {
@@ -22,8 +24,6 @@ slack.on('message', function(message) {
 		channel.send("Bonjour.");
 	}
 	else if (selfQuote.test(message.text)) {
-		var random = Math.random() * 100;
-
 		console.log("I was quoted.");
 		if (random < 20) {
 			channel.send("Le Java est le COBOL de notre époque.");
@@ -40,6 +40,15 @@ slack.on('message', function(message) {
 		}
 		else {
 			channel.send("Je sens... la chaleur...")
+		}
+	}
+	else if (markQuote.test(message.text)) {
+		console.log("MarK was quoted.");
+		if (random < 50) {
+			channel.send("Oui cher collègue ?");
+		}
+		else {
+			channel.send("@mark n'est pas disponible pour le moment, veuillez vous adresser à moi en attendant.");
 		}
 	}
 });
