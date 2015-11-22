@@ -1,0 +1,18 @@
+{
+  "name": "marcbot",
+  "version": "0.0.1",
+  "description": "Marc's bot for Polytechsi2016 Slack team.",
+  "author": "Marc Karassev",
+  "contributors": [
+    {
+      "name": "Marc Karassev",
+      "email": "marc.karassev@yahoo.fr"
+    }
+  ],
+  "repository": {},
+  "dependencies": {
+    "slack-client": "^1.4.1"
+  },
+  "private": true,
+  "license": "MIT"
+}
