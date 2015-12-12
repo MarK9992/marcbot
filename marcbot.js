@@ -25,17 +25,14 @@ slack.on('message', function(message) {
 	}
 	else if (selfQuote.test(message.text)) {
 		console.log("I was quoted.");
-		if (random < 20) {
+		if (random < 25) {
 			channel.send("Le Java est le COBOL de notre époque.");
 			channel.send("http://www.writeups.org/img/inset/Kobold_wow_h1.jpg");
 		}
-		else if (random < 40) {
+		else if (random < 50) {
 			channel.send("Go sera le nouveau Java.");
 		}
-		else if (random < 60) {
-			channel.send("On devrait compiler un langage potable vers du C++.");
-		}
-		else if (random < 80) {
+		else if (random < 75) {
 			channel.send("La carte de Marc chauffe.");
 		}
 		else {
